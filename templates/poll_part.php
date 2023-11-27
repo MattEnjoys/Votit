@@ -12,7 +12,7 @@
                 <?= $poll['title'] ?>
             </h3>
             <div class="mt-auto">
-                <a href="#"
+                <a href="sondage.php?id=<?= $poll['id'] ?>"
                    class="btn btn-primary">Voir le sondage</a>
             </div>
         </div>

@@ -1,6 +1,12 @@
 <?php
 require_once 'lib/config.php';
 require_once 'lib/pdo.php';
+
+$mainMenu = [
+    'index.php' => 'Accueil',
+    'sondages.php' => 'Sondages',
+];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +22,16 @@ require_once 'lib/pdo.php';
           crossorigin="anonymous">
     <link rel="stylesheet"
           href="assets/css/override-bootstrap.css">
-    <title>Votit</title>
+    <title>
+        <?php
+        if (isset($mainMenu[basename($_SERVER['SCRIPT_NAME'])])) {
+            echo $mainMenu[basename($_SERVER['SCRIPT_NAME'])] . ' - ' . SITE_NAME;
+        } else if (isset($pageTitle)) {
+            echo $pageTitle . ' - ' . SITE_NAME;
+        } else {
+            echo SITE_NAME;
+        } ?>
+    </title>
 </head>
 
 <body>
@@ -38,17 +53,18 @@ require_once 'lib/pdo.php';
                 </a>
             </div>
 
-            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#"
-                       class="nav-link px-2 link-secondary">Home</a></li>
-                <li><a href="#"
-                       class="nav-link px-2">Features</a></li>
-                <li><a href="#"
-                       class="nav-link px-2">Pricing</a></li>
-                <li><a href="#"
-                       class="nav-link px-2">FAQs</a></li>
-                <li><a href="#"
-                       class="nav-link px-2">About</a></li>
+            <ul class="nav nav-pills">
+                <?php foreach ($mainMenu as $page => $titre) { ?>
+                    <li class="nav-item"><a href="<?= $page; ?>"
+                           class="nav-link
+                           <?php
+                           if (basename($_SERVER['SCRIPT_NAME']) === $page) {
+                               echo 'active';
+                           }
+                           ?>">
+                            <?= $titre; ?>
+                        </a></li>
+                <?php } ?>
             </ul>
 
             <div class="col-md-3 text-end">

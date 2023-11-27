@@ -41,3 +41,11 @@ Projet gité sur [le git d'Anthony Laplane](https://github.com/arirangz/studi_vo
 > Je crée la page qui listera tous les sondages, sondages.php
 
 > Je crée la page pour afficher le sondage en lui même, sondage.php.
+
+## Live 4 :
+
+> Je met en place le bon fonctionnement de la navigation.
+
+> Je centralise la config générale dans required_files.php.
+
+> Mise en place dynamique des noms et des votes sur sondage.php
